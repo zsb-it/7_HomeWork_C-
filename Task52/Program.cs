@@ -34,5 +34,24 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[,] createMatrixRndInt = CreateMatrixRndInt(5, 5, 0, 10);
+void Printsumm(int[,] matrix)
+{
+    int size = matrix.GetLength(1);
+    double[] summ = new double[size];
+    //int summ = 0;
+    Console.Write("Среднее арифметическое каждого столбца: ");
+    for (int j = 0; j < matrix.GetLength(1); j++)
+    {
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            summ[j] = summ[j] + matrix[i, j];
+        }
+        double arithmeticMean = Math.Round(summ[j] / matrix.GetLength(0), 2);
+        if (j < matrix.GetLength(1) - 1) Console.Write($"{arithmeticMean}; ");
+        else Console.WriteLine($"{arithmeticMean}. ");
+    }
+}
+
+int[,] createMatrixRndInt = CreateMatrixRndInt(3, 4, 0, 10);
 PrintMatrix(createMatrixRndInt);
+Printsumm(createMatrixRndInt);
